@@ -6,6 +6,10 @@ SAMPLES_DIR = "samples"
 SAMPLES_CORRECT_DIR = "correct"
 SAMPLES_INCORRECT_DIR = "incorrect"
 
+########### SIZES & DIMS ###########
+INPUT_SHAPE_GRAYSCALE = (105, 105, 1)
+IMAGE_SIZE = (105, 105)
+
 #PATHS
 PAIRS_TRAIN_PATH = ""
 PAIRS_TEST_PATH = ""
