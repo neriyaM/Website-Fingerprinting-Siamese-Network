@@ -35,36 +35,4 @@ class SiameseNetwork:
         predicts = self.network.predict(X_test)
         predicts = [int(np.round(x)) for x in predicts]
         test_accuracy = accuracy_score(Y_test, predicts)
-        record_samples(predicts, X_test, Y_test, SAMPLES_DIR)
         return duration, test_accuracy
-
-
-def record_samples(predicts, X_test, Y_test, output_dir):
-    correct_dir_path = os.path.join(output_dir, SAMPLES_CORRECT_DIR)
-    incorrect_dir_path = os.path.join(output_dir, SAMPLES_INCORRECT_DIR)
-    if not os.path.exists(correct_dir_path):
-        os.makedirs(correct_dir_path)
-    if not os.path.exists(incorrect_dir_path):
-        os.makedirs(incorrect_dir_path)
-
-    correct_num, incorrect_num = 0, 0
-    i = 0
-    while correct_num < 10 or incorrect_num < 10:
-        pair = (X_test[0][i], X_test[1][i])
-        if Y_test[i] == predicts[i]:
-            if correct_num < 10:
-                correct_num = correct_num + 1
-                save_pair(pair, correct_num, correct_dir_path)
-        else:
-            if incorrect_num < 10:
-                incorrect_num = incorrect_num + 1
-                save_pair(pair, incorrect_num, incorrect_dir_path)
-
-        i = i + 1
-
-
-def save_pair(pair, index, output_dir):
-    imageA_path = os.path.join(output_dir, '{}A.png'.format(index))
-    imageB_path = os.path.join(output_dir, '{}B.png'.format(index))
-    cv2.imwrite(imageA_path, pair[0].squeeze())
-    cv2.imwrite(imageB_path, pair[1].squeeze())
