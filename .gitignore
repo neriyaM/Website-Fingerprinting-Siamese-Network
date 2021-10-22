@@ -131,3 +131,7 @@ dmypy.json
 *.zip
 lfw/
 .idea/
+
+data/
+TensorBoardLogs/
+

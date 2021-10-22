@@ -4,7 +4,8 @@ from loader import load_data
 from runner import load_runners
 import json
 from consts import *
-
+import numpy as np
+import tensorflow as tf
 
 def main():
     with open(CONFIG_FILE_NAME) as f:
@@ -14,6 +15,10 @@ def main():
                                  "data/train/features")
     X_test, Y_test = load_data("data/test/pairs/match.csv", "data/test/pairs/mismatch.csv",
                                "data/test/features")
+    #X_train = np.array(X_train)
+    #Y_train = np.array(Y_train)
+    #X_test = np.array(X_test)
+    #Y_test = np.array(Y_test)
 
     init_results_logger()
 
