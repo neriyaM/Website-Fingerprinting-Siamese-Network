@@ -7,18 +7,15 @@ from consts import *
 import numpy as np
 import tensorflow as tf
 
+
 def main():
     with open(CONFIG_FILE_NAME) as f:
         config = json.load(f)
     runners = load_runners(config[RUNNERS_KEY])
-    X_train, Y_train = load_data("data/train/pairs/match.csv", "data/train/pairs/mismatch.csv",
-                                 "data/train/features")
-    X_test, Y_test = load_data("data/test/pairs/match.csv", "data/test/pairs/mismatch.csv",
-                               "data/test/features")
-    #X_train = np.array(X_train)
-    #Y_train = np.array(Y_train)
-    #X_test = np.array(X_test)
-    #Y_test = np.array(Y_test)
+    X_train, Y_train = load_data("data_old/train/pairs/match.csv", "data_old/train/pairs/mismatch.csv",
+                                 "data_old/train/features")
+    X_test, Y_test = load_data("data_old/test/pairs/match.csv", "data_old/test/pairs/mismatch.csv",
+                               "data_old/test/features")
 
     init_results_logger()
 

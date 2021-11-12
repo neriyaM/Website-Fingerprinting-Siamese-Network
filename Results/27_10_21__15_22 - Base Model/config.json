@@ -1,0 +1,15 @@
+{
+  "Runners": [
+    {
+      "name": "Adam batchnorm dropout",
+      "batch_size": 128,
+      "validation_size": 0.1,
+      "epochs": 150,
+      "batchnorm": true,
+      "dropout": true,
+      "optimizer": "Adam",
+      "learning_rate": 0.00006,
+      "callbacks": ["EarlyStopping", "TensorBoard"]
+    }
+  ]
+}

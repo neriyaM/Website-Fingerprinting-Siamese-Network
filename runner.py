@@ -6,6 +6,9 @@ import csv
 from base_model import build_base_model
 from siamese_network import SiameseNetwork
 from tensorflow.keras.backend import clear_session
+from df_model import DF
+from alexnet_model import alexnet_model
+from tensorflow.keras.applications import ResNet50
 
 
 class Runner:
@@ -22,6 +25,8 @@ class Runner:
         self.callbacks = callbacks
 
         base_model = build_base_model(INPUT_SHAPE_GRAYSCALE, batchnorm, dropout)
+        #base_model = DF(INPUT_SHAPE_GRAYSCALE, 64)
+        #base_model = alexnet_model(img_shape=INPUT_SHAPE_GRAYSCALE, n_classes=1024)
         self.siamese_network = SiameseNetwork(base_model, INPUT_SHAPE_GRAYSCALE,
                                               'binary_crossentropy', optimizer, 'binary_accuracy')
 

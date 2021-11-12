@@ -1,0 +1,2 @@
+batch_size,validation_size,epochs,batchnorm,dropout,optimizer,learning_rate,test_accuracy,duration
+128,0.1,150,True,True,Adam,6e-05,0.6261682242990654,12.21257996559143

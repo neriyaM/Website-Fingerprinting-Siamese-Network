@@ -37,9 +37,6 @@ def load_match_pairs(features_vectors, path):
             first_vector = features_vectors[person][first_index]
             second_vector = features_vectors[person][second_index]
 
-            first_vector = np.array(first_vector).reshape(len(first_vector), 1)
-            second_vector = np.array(second_vector).reshape(len(second_vector), 1)
-
             X.append([np.array(first_vector), second_vector])
             Y.append(0)
 
@@ -58,10 +55,6 @@ def load_mismatch_pairs(features_vectors, path):
             second_index = int(line[3])
             first_vector = features_vectors[first_person][first_index]
             second_vector = features_vectors[second_person][second_index]
-
-            first_vector = np.array(first_vector).reshape(len(first_vector), 1)
-            second_vector = np.array(second_vector).reshape(len(second_vector), 1)
-
 
             X.append([first_vector, second_vector])
             Y.append(1)
