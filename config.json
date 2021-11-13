@@ -1,15 +1,30 @@
 {
-  "Runners": [
-    {
-      "name": "Adam batchnorm dropout",
-      "batch_size": 128,
-      "validation_size": 0.1,
-      "epochs": 50,
-      "batchnorm": true,
-      "dropout": true,
-      "optimizer": "Adam",
-      "learning_rate": 0.00006,
-      "callbacks": ["EarlyStopping", "TensorBoard"]
-    }
-  ]
+  "Runners": {
+    "base_models": ["DF"],
+    "datasets": ["data"],
+    "embedding_sizes": [128, 256, 512],
+    "batch_sizes": [128],
+    "distance_lambdas": ["L1", "L2"],
+    "optimizers": [
+      {
+        "name": "Adam",
+        "learning_rates": [0.00006]
+      },
+      {
+        "name": "Adagrad",
+        "learning_rates": [0.01, 0.001]
+      },
+      {
+        "name": "RMSprop",
+        "learning_rates": [0.1, 0.01]
+      },
+      {
+        "name": "SGD",
+        "learning_rates": [0.1, 0.01]
+      }
+    ],
+    "validation_sizes": [0.1, 0.2],
+    "epochs": [50],
+    "callbacks": ["EarlyStopping"]
+  }
 }

@@ -1,23 +1,20 @@
 from tensorflow.keras.layers import Input, Lambda, Dense
 from tensorflow.keras.models import Model
 from sklearn.metrics import accuracy_score
-from consts import *
 import time
 import numpy as np
-import os
-import cv2
 
 
 class SiameseNetwork:
-    def __init__(self, base_model, input_shape, loss, optimizer, metrics):
+    def __init__(self, base_model, input_shape, distance_lambda, loss, optimizer, metrics):
         first_input = Input(input_shape)
         second_input = Input(input_shape)
         first_model = base_model(first_input)
         second_model = base_model(second_input)
 
         # L1 distance layer
-        distance_lambda = Lambda(lambda x: abs(x[0] - x[1]))
-        distance_layer = distance_lambda([first_model, second_model])
+        distance_lambda_layer = Lambda(distance_lambda)
+        distance_layer = distance_lambda_layer([first_model, second_model])
 
         output_layer = Dense(1, activation='sigmoid')(distance_layer)
         network = Model(inputs=[first_input, second_input], outputs=output_layer)
