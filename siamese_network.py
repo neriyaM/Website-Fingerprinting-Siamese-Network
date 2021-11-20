@@ -7,8 +7,8 @@ import numpy as np
 
 class SiameseNetwork:
     def __init__(self, base_model, input_shape, distance_lambda, loss, optimizer, metrics):
-        first_input = Input(input_shape)
-        second_input = Input(input_shape)
+        first_input = [Input(shape=input_shape), Input(shape=input_shape), Input(shape=(7,))]
+        second_input = [Input(shape=input_shape), Input(shape=input_shape), Input(shape=(7,))]
         first_model = base_model(first_input)
         second_model = base_model(second_input)
 

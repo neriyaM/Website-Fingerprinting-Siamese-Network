@@ -4,7 +4,7 @@ import itertools
 from tensorflow.keras.optimizers import Adam, Adagrad, RMSprop, SGD
 from tensorflow.keras.callbacks import EarlyStopping, TensorBoard
 import utils
-from loaders.data import load_data
+from loaders.data import load_data, convert_to_var_cnn
 from runner import Runner
 from loaders.models import load_base_models
 
@@ -61,6 +61,9 @@ def load_dataset(dataset_name):
     features_test = os.path.join(dataset_name, TEST_KEY, FEATURES_KEY)
     X_test, Y_test = load_data(match_pairs_test, mismatch_pairs_test, features_test)
 
+    if dataset_name == "var_cnn":
+        X_train = convert_to_var_cnn(X_train)
+        X_test = convert_to_var_cnn(X_test)
     return utils.Dataset(dataset_name, X_train, Y_train, X_test, Y_test)
 
 

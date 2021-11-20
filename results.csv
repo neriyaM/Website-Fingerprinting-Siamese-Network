@@ -1,0 +1,2 @@
+base_models,datasets,distance_lambdas,batch_sizes,embedding_sizes,validation_sizes,epochs,batchnorm,dropout,optimizers,learning_rates,test_accuracy,duration
+var_cnn,var_cnn,L1,128,256,0.1,50,False,False,SGD,0.01,0.6869158878504673,581.0499732494354

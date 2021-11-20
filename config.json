@@ -1,29 +1,17 @@
 {
   "Runners": {
-    "base_models": ["DF"],
-    "datasets": ["data"],
-    "embedding_sizes": [128, 256, 512],
+    "base_models": ["var_cnn"],
+    "datasets": ["var_cnn"],
+    "embedding_sizes": [256],
     "batch_sizes": [128],
-    "distance_lambdas": ["L1", "L2"],
+    "distance_lambdas": ["L1"],
     "optimizers": [
       {
-        "name": "Adam",
-        "learning_rates": [0.00006]
-      },
-      {
-        "name": "Adagrad",
-        "learning_rates": [0.01, 0.001]
-      },
-      {
-        "name": "RMSprop",
-        "learning_rates": [0.1, 0.01]
-      },
-      {
         "name": "SGD",
-        "learning_rates": [0.1, 0.01]
+        "learning_rates": [0.01]
       }
     ],
-    "validation_sizes": [0.1, 0.2],
+    "validation_sizes": [0.1],
     "epochs": [50],
     "callbacks": ["EarlyStopping"]
   }

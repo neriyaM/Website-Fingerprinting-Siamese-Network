@@ -6,7 +6,8 @@ RESULTS_FILE = "results.csv"
 ########### SIZES & DIMS ###########
 INPUT_SIZES = {
     "data": (1000, 1),
-    "data_old": (148, 1)
+    "data_old": (148, 1),
+    "var_cnn": (1000, 1)
 }
 
 ########### KEYS ###########
