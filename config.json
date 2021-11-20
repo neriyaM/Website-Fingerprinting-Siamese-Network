@@ -1,8 +1,8 @@
 {
   "Runners": {
-    "base_models": ["DF"],
+    "base_models": ["var_cnn"],
     "datasets": ["data"],
-    "embedding_sizes": [128, 256, 512],
+    "embedding_sizes": [256, 512],
     "batch_sizes": [128],
     "distance_lambdas": ["L1", "L2"],
     "optimizers": [

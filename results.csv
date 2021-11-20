@@ -1,0 +1,1 @@
+base_models,datasets,distance_lambdas,batch_sizes,embedding_sizes,validation_sizes,epochs,batchnorm,dropout,optimizers,learning_rates,test_accuracy,duration
