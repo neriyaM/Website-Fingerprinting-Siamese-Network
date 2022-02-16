@@ -2,11 +2,12 @@ import os
 from consts import *
 import itertools
 from tensorflow.keras.optimizers import Adam, Adagrad, RMSprop, SGD
-from tensorflow.keras.callbacks import EarlyStopping, TensorBoard
+from tensorflow.keras.callbacks import EarlyStopping, TensorBoard, ModelCheckpoint, ReduceLROnPlateau
 import utils
 from loaders.data import load_data
 from runner import Runner
 from loaders.models import load_base_models
+import numpy as np
 
 
 def load_runners(runners_config):
@@ -113,5 +114,11 @@ def get_callbacks(runner_name, callbacks_name):
             log_dir = os.path.join(TENSORBOARD_LOGS_DIR, runner_name)
             callbacks.append(TensorBoard(log_dir=log_dir, histogram_freq=1,
                                          write_graph=True, write_images=True, update_freq='batch'))
+        elif name == "ModelCheckpoint":
+            callbacks.append(
+                ModelCheckpoint(filepath="model.h5", monitor='val_binary_accuracy', mode='max', save_best_only=True,
+                                verbose=1))
+        elif name == "ReduceLR":
+            callbacks.append(ReduceLROnPlateau(factor=np.sqrt(0.1), patience=5))
 
     return callbacks
